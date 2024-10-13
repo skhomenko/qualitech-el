@@ -127,7 +127,7 @@ function trimSubheaderText() {
     subheaderItems.forEach(item => {
         const fullText = item.getAttribute('data-full-text');
         if (window.innerWidth <= 480) {
-            const trimmedText = fullText.length > 10 ? fullText.slice(0, 8) + '...' : fullText;
+            const trimmedText = fullText.length > 6 ? fullText.slice(0, 5) + '...' : fullText;
             item.textContent = trimmedText;
         } else {
             item.textContent = fullText;
