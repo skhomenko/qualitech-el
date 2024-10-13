@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qualitech Électricité Inc. fournit des services électriques professionnels résidentiels, commerciaux et d'automatisation à Montréal. Contactez-nous dès aujourd'hui pour des solutions électriques de qualité.">
+    <title>Qualitech Électricité Inc. - Français</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Electrician",
+        "name": "Qualitech Électricité Inc.",
+        "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Grand Montréal",
+        "addressRegion": "QC",
+        "postalCode": "J3B 8V9",
+        "addressCountry": "CA"
+        },
+        "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-514-806-9323",
+        "contactType": "Service clientèle"
+        }
+    }
+    </script>
+        
+</head>
+
+<body>
+    <header>
+        <img src="assets/images/QE Logo.webp" alt="Qualitech Électricité Inc. Logo">
+        <div class="language-switch">
+            <a href="index-en.html" id="switch-to-en">English</a>
+        </div>
+    </header>
+    <main>
+        <div class="carousel-container">
+            <!-- Residential Slide -->
+            <div class="carousel-slide" data-lang="fr" id="slide-residential-fr" data-bg="assets/images/residential.webp">
+                <div class="carousel-header">
+                    Services Électriques Résidentiels
+                </div>
+                <div class="carousel-content">
+                    <p>Nous nous spécialisons dans les services électriques résidentiels, offrant tout, des réparations mineures aux installations complètes.</p>
+                    <ul>
+                        <li>Installation et mise à niveau de l'éclairage</li>
+                        <li>Amélioration des panneaux électriques</li>
+                        <li>Services de câblage et de recâblage</li>
+                        <li>Systèmes de sécurité à domicile</li>
+                        <li>Installations de bornes de recharge pour véhicules électriques</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Commercial Slide -->
+            <div class="carousel-slide" data-lang="fr" id="slide-commercial-fr" data-bg="assets/images/commercial.webp">
+                <div class="carousel-header">
+                    Services Électriques Commerciaux
+                </div>
+                <div class="carousel-content">
+                    <p>Notre équipe d'experts offre des solutions électriques fiables pour les entreprises, garantissant sécurité et efficacité.</p>
+                    <ul>
+                        <li>Conception et installation de systèmes électriques</li>
+                        <li>Solutions d'éclairage pour bureaux et commerces</li>
+                        <li>Protection contre les surtensions et alimentation de secours</li>
+                        <li>Systèmes de sécurité</li>
+                        <li>Contrats de maintenance réguliers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Automation Slide -->
+            <div class="carousel-slide" data-lang="fr" id="slide-automation-fr" data-bg="assets/images/automation.webp">
+                <div class="carousel-header">
+                    Solutions d'Automatisation
+                </div>
+                <div class="carousel-content">
+                    <p>Améliorez votre espace avec nos services d'automatisation, apportant la technologie avancée à votre domicile ou entreprise.</p>
+                    <ul>
+                        <li>Systèmes de contrôle d'éclairage intelligent</li>
+                        <li>Contrôle du climat à domicile et au bureau</li>
+                        <li>Systèmes de sécurité à accès à distance</li>
+                        <li>Systèmes intégrés de son et de divertissement</li>
+                        <li>Solutions de gestion de l'énergie</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <button onclick="prevSlide()" aria-label="Previous Slide">&#10094;</button>
+                <button onclick="nextSlide()" aria-label="Next Slide">&#10095;</button>
+            </div>
+        </div>
+        <div class="carousel-dots" id="carousel-dots">
+            <span class="dot" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+    </main>
+    <section id="contact">
+        <h2>Contactez-Nous</h2>
+        <address>
+            <ul>
+                <li>Téléphone: <a href="tel:+15148069323">514 806 9323</a></li>
+                <li>Email: <a href="mailto:info@qualitech-electricite.com">info@qualitech-electricite.com</a></li>
+                <li>Adresse: 123 Main Street, Montreal, QC</li>
+            </ul>
+        </address>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Qualitech Électricité Inc. Tous droits réservés.</p>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+</body>
+
+</html>

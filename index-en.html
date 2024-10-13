@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qualitech Électricité Inc. provides professional residential, commercial, and automation electrical services in Montreal. Contact us today for quality electrical solutions.">
+    <title>Qualitech Électricité Inc. - English</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Electrician",
+        "name": "Qualitech Électricité Inc.",
+        "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Greater Montreal",
+        "addressRegion": "QC",
+        "postalCode": "J3B 8V9",
+        "addressCountry": "CA"
+        },
+        "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-514-806-9323",
+        "contactType": "Customer Service"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <header>
+        <img src="assets/images/QE Logo.webp" alt="Qualitech Électricité Inc. Logo">
+        <div class="language-switch">
+            <a href="index-fr.html" id="switch-to-fr">Français</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="carousel-container">
+            <!-- Residential Slide -->
+            <div class="carousel-slide" data-lang="en" id="slide-residential-en" data-bg="assets/images/residential.webp">
+                <div class="carousel-header">
+                    Residential Electrical Services
+                </div>
+                <div class="carousel-content">
+                    <p>We specialize in residential electrical services, offering everything from minor repairs to complete system installations.</p>
+                    <ul>
+                        <li>Lighting installation and upgrades</li>
+                        <li>Electrical panel upgrades</li>
+                        <li>Wiring and rewiring services</li>
+                        <li>Home security systems</li>
+                        <li>EV charger installations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Commercial Slide -->
+            <div class="carousel-slide" data-lang="en" id="slide-commercial-en" data-bg="assets/images/commercial.webp">
+                <div class="carousel-header">
+                    Commercial Electrical Services
+                </div>
+                <div class="carousel-content">
+                    <p>Our expert team offers reliable electrical solutions for businesses, ensuring safety and efficiency.</p>
+                    <ul>
+                        <li>Electrical system design and installation</li>
+                        <li>Office and retail lighting solutions</li>
+                        <li>Surge protection and backup power</li>
+                        <li>Safety and security systems</li>
+                        <li>Regular maintenance contracts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Automation Slide -->
+            <div class="carousel-slide" data-lang="en" id="slide-automation-en" data-bg="assets/images/automation.webp">
+                <div class="carousel-header">
+                    Automation Solutions
+                </div>
+                <div class="carousel-content">
+                    <p>Enhance your space with our automation services, bringing advanced technology to your home or business.</p>
+                    <ul>
+                        <li>Smart lighting control systems</li>
+                        <li>Home and office climate control</li>
+                        <li>Remote access security systems</li>
+                        <li>Integrated sound and entertainment systems</li>
+                        <li>Energy management solutions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <button onclick="prevSlide()" aria-label="Previous Slide">&#10094;</button>
+                <button onclick="nextSlide()" aria-label="Next Slide">&#10095;</button>
+            </div>
+        </div> 
+        <div class="carousel-dots" id="carousel-dots">
+            <span class="dot" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+    </main>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <address>
+            <ul>
+                <li>Phone: <a href="tel:+15148069323">514 806 9323</a></li>
+                <li>Email: <a href="mailto:info@qualitech-electricite.com">info@qualitech-electricite.com</a></li>
+                <li>Address: 123 Main Street, Montreal, QC</li>
+            </ul>
+        </address>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Qualitech Électricité Inc. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+</body>
+
+</html>
