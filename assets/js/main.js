@@ -9,6 +9,7 @@ function showSlide(slides, index) {
             lazyLoadBackgrounds();
         }
     });
+    updateSubheader(index);
     updateURL();
     updateDots();
 }
@@ -36,6 +37,7 @@ function goToSlide(slideIndex) {
     currentSlide = slideIndex;
     const activeSlides = document.querySelectorAll('.carousel-slide');
     showSlide(activeSlides, currentSlide);
+    updateSubheader(slideIndex);
     updateLanguageSwitchLinks();
 }
 
@@ -46,6 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let activeSlides = document.querySelectorAll('.carousel-slide');
     
     showSlide(activeSlides, currentSlide);
+    updateSubheader(slideIndex);
     updateLanguageSwitchLinks();
     updateDots();
 });
@@ -72,6 +75,15 @@ function prevSlide() {
     updateLanguageSwitchLinks();
 }
 
+// Function to update the subheader highlight
+function updateSubheader(slideIndex) {
+    const subheaderItems = document.querySelectorAll('.subheader-item');
+    subheaderItems.forEach((item, index) => {
+        item.classList.toggle('active', index === slideIndex);
+    });
+}
+
+// Function to update the language switch list
 function updateLanguageSwitchLinks() {
     const switchToEnglish = document.getElementById('switch-to-en');
     const switchToFrench = document.getElementById('switch-to-fr');
