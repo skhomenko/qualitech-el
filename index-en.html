@@ -38,9 +38,15 @@
     </header>
 
     <main>
+        <div class="subheader-panel">
+            <span class="subheader-item" onclick="goToSlide(0)">Residential</span>
+            <span class="subheader-item" onclick="goToSlide(1)">Commercial</span>
+            <span class="subheader-item" onclick="goToSlide(2)">Automation</span>
+        </div>
+        
         <div class="carousel-container">
             <!-- Residential Slide -->
-            <div class="carousel-slide" data-lang="en" id="slide-residential-en" data-bg="assets/images/residential.webp">
+            <div class="carousel-slide" id="slide-residential-en" data-bg="assets/images/residential.webp">
                 <div class="carousel-header">
                     Residential Electrical Services
                 </div>
@@ -57,7 +63,7 @@
             </div>
 
             <!-- Commercial Slide -->
-            <div class="carousel-slide" data-lang="en" id="slide-commercial-en" data-bg="assets/images/commercial.webp">
+            <div class="carousel-slide" id="slide-commercial-en" data-bg="assets/images/commercial.webp">
                 <div class="carousel-header">
                     Commercial Electrical Services
                 </div>
@@ -74,7 +80,7 @@
             </div>
 
             <!-- Automation Slide -->
-            <div class="carousel-slide" data-lang="en" id="slide-automation-en" data-bg="assets/images/automation.webp">
+            <div class="carousel-slide" id="slide-automation-en" data-bg="assets/images/automation.webp">
                 <div class="carousel-header">
                     Automation Solutions
                 </div>
