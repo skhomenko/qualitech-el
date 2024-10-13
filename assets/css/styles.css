@@ -1,0 +1,234 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    max-height: 120px;
+    margin-right: 20px;
+}
+
+.language-switch {
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.language-switch a {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.language-switch a:hover {
+    background-color: #0056b3; 
+}
+
+
+.carousel-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70vh;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slide {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s ease;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+.carousel-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    font-size: 1.6em;
+}
+
+.carousel-content {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.carousel-nav button {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-nav button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.carousel-dots {
+    text-align: center;
+    margin-top: 15px;
+    position: relative;
+    bottom: 0;
+    padding-top: 10px;
+}
+
+.carousel-dots .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.carousel-dots .active {
+    background-color: #717171;
+}
+
+#contact {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+#contact h2 {
+    font-size: 2em;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+#contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+#contact ul li {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+
+#contact ul li a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+#contact ul li a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin-top: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        width: 100%;
+        height: 60vh;
+    }
+
+    .carousel-content {
+        bottom: 20px;
+        left: 10px;
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .carousel-header {
+        top: 10px;
+        left: 10px;
+    }
+
+    .carousel-nav button {
+        padding: 5px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        height: 50vh;
+    }
+
+    .carousel-content {
+        bottom: 10px;
+        left: 5px;
+        padding: 10px;
+    }
+
+    .carousel-header {
+        top: 5px;
+        left: 5px;
+        padding: 8px;
+        font-size: 1.4em;
+    }
+
+    .carousel-nav button {
+        padding: 5px;
+        font-size: 14px;
+    }
+}
