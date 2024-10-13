@@ -243,9 +243,10 @@ footer {
 @media (max-width: 480px) {
 
     .subheader-item {
-        font-size: 1em;
-        margin: 0 5ph;
+        font-size: 0.9em;
+        margin: 0 5px;
         padding: 5px 10px;
+        white-space: nowrap;
     }
 
     .subheader-panel {
