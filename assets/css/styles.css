@@ -35,6 +35,7 @@ header img {
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .language-switch a:hover {
@@ -56,7 +57,8 @@ header img {
     margin: 0 15px;
     padding: 5px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease;
 }
 
 .subheader-item:hover {
@@ -88,7 +90,7 @@ header img {
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: all 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .carousel-slide.active {
@@ -163,6 +165,7 @@ header img {
     border-radius: 50%;
     display: inline-block;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .carousel-dots .active {
@@ -197,6 +200,7 @@ header img {
 #contact ul li a {
     color: #007BFF;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 #contact ul li a:hover {
@@ -246,7 +250,6 @@ footer {
         font-size: 0.9em;
         margin: 0 5px;
         padding: 5px 10px;
-        white-space: nowrap;
     }
 
     .subheader-panel {

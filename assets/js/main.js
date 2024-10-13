@@ -41,18 +41,30 @@ function goToSlide(slideIndex) {
     updateLanguageSwitchLinks();
 }
 
-// Initialize the carousel with the correct slide
+// Initialize the carousel and footer year with the correct slide
 window.addEventListener('DOMContentLoaded', () => {
+    trimSubheaderText();  // Adjust subheader for mobile view
     currentSlide = getCurrentSlide();  // Get the current slide index from URL or default to 0
 
     let activeSlides = document.querySelectorAll('.carousel-slide');
     
     showSlide(activeSlides, currentSlide);
-    updateSubheader(slideIndex);
+    updateSubheader(currentSlide);
     updateLanguageSwitchLinks();
     updateDots();
+
+    // Set current year in the footer
+    const yearSpan = document.getElementById('current-year');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
 });
 
+// Handle window resizing to trim subheader text when the window size changes
+window.addEventListener('resize', () => {
+    trimSubheaderText();  // Adjust subheader text on resize
+});
+
+// Function to get the current slide index from the URL
 function getCurrentSlide() {
     const params = new URLSearchParams(window.location.search);
     const slideIndex = params.get('currentSlide');
@@ -83,7 +95,7 @@ function updateSubheader(slideIndex) {
     });
 }
 
-// Function to update the language switch list
+// Function to update the language switch links
 function updateLanguageSwitchLinks() {
     const switchToEnglish = document.getElementById('switch-to-en');
     const switchToFrench = document.getElementById('switch-to-fr');
@@ -96,6 +108,7 @@ function updateLanguageSwitchLinks() {
     }
 }
 
+// Function to lazy load background images
 function lazyLoadBackgrounds() {
     const lazyBackgrounds = document.querySelectorAll('.carousel-slide');
 
@@ -107,9 +120,17 @@ function lazyLoadBackgrounds() {
     });
 }
 
-// JavaScript to set the current year in the footer
-window.addEventListener('DOMContentLoaded', (event) => {
-    const yearSpan = document.getElementById('current-year');
-    const currentYear = new Date().getFullYear();
-    yearSpan.textContent = currentYear;
-});
+// Function to trim subheader text for mobile devices
+function trimSubheaderText() {
+    const subheaderItems = document.querySelectorAll('.subheader-item');
+
+    subheaderItems.forEach(item => {
+        const fullText = item.getAttribute('data-full-text');
+        if (window.innerWidth <= 480) {
+            const trimmedText = fullText.length > 10 ? fullText.slice(0, 8) + '...' : fullText;
+            item.textContent = trimmedText;
+        } else {
+            item.textContent = fullText;
+        }
+    });
+}
