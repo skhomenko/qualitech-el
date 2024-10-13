@@ -241,6 +241,17 @@ footer {
 }
 
 @media (max-width: 480px) {
+
+    .subheader-item {
+        font-size: 1em;
+        margin: 0 5ph;
+        padding: 5px 10px;
+    }
+
+    .subheader-panel {
+        padding: 5px 0;
+    }
+
     .carousel-container {
         height: 50vh;
     }
