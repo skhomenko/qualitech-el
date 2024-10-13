@@ -282,4 +282,30 @@ footer {
         height: 30px;
         font-size: 14px;
     }
+
+    #contact {
+        padding: 8px;
+    }
+
+    #contact h2 {
+        font-size: 1.5em;
+        margin-bottom: 3px;
+        line-height: 1.2;
+    }
+
+    #contact ul li {
+        font-size: 0.9em;
+        margin-bottom: 3px;
+        line-height: 1.2;
+    }
+
+    #contact ul li a {
+        font-size: 0.9em;
+    }
+
+    footer {
+        padding: 10px;
+        margin-top: 15px;
+        font-size: 0.8em;
+    }
 }
