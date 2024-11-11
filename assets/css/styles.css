@@ -17,8 +17,7 @@ header {
 }
 
 header img {
-    max-height: 120px;
-    margin-right: 20px;
+    max-height: 200px;
 }
 
 .language-switch {
