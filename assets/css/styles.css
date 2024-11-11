@@ -81,6 +81,7 @@ header img {
     text-overflow: ellipsis;
     max-width: 120px;
     transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease;
+    display: inline-block;
 }
 
 .subheader-item:hover {
@@ -279,9 +280,11 @@ footer {
 @media (max-width: 480px) {
 
     .subheader-item {
+        padding: 2px 3px;
+        margin: 0;
         font-size: 0.8em;
+        display: inline-block;
         max-width: 90px;
-        margin: 0 0px;
     }
 
     .subheader-panel {
