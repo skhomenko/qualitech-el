@@ -60,11 +60,13 @@ header img {
 .subheader-items-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-grow: 1;
+    flex-wrap: nowrap;
     gap: 10px;
     overflow: hidden;
     white-space: nowrap;
-    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .subheader-item {
@@ -238,7 +240,7 @@ footer {
 @media (max-width: 768px) {
 
     header {
-        padding: 0;
+        padding: 2px 0px;
     }
 
     header img {
