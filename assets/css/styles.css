@@ -21,10 +21,9 @@ header img {
 }
 
 .language-switch {
-    position: fixed; 
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
+    margin-right: 10px;
+    position: relative;
+    display: inline-block;
 }
 
 .language-switch a {
@@ -43,10 +42,25 @@ header img {
 
 .subheader-panel {
     background-color: #FFA500;
-    text-align: center;
-    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.subheader-items-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 15px;
+}
+
+.language-switch {
+    margin-right: 10px;
+    position: relative;
+    display: inline-block;
 }
 
 .subheader-item {
