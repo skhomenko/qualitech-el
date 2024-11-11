@@ -32,16 +32,18 @@
 <body>
     <header>
         <img src="assets/images/QE Logo.webp" alt="Qualitech Électricité Inc. Logo">
-            <div class="language-switch">
-                <a href="index-fr.html" id="switch-to-fr">Français</a>
-            </div>
     </header>
 
     <main>
         <div class="subheader-panel">
-            <span class="subheader-item" onclick="goToSlide(0)" data-full-text="Residential">Residential</span>
-            <span class="subheader-item" onclick="goToSlide(1)" data-full-text="Commercial">Commercial</span>
-            <span class="subheader-item" onclick="goToSlide(2)" data-full-text="Automation">Automation</span>
+            <div class="subheader-items-container">
+                <span class="subheader-item" onclick="goToSlide(0)" data-full-text="Residential">Residential</span>
+                <span class="subheader-item" onclick="goToSlide(1)" data-full-text="Commercial">Commercial</span>
+                <span class="subheader-item" onclick="goToSlide(2)" data-full-text="Automation">Automation</span>
+            </div>
+            <div class="language-switch">
+                <a href="index-fr.html" id="switch-to-fr">Français</a>
+            </div>
         </div>
         
         <div class="carousel-container">
