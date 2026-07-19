@@ -105,16 +105,35 @@ a {
 }
 
 .brand {
+    position: relative;
     display: flex;
     justify-content: center;
     padding: 18px clamp(18px, 4vw, 56px) 14px;
     border-top: 5px solid var(--brand-orange);
     background: var(--warm-white);
+    text-decoration: none;
 }
 
-.brand img {
+.brand > img {
     width: min(86vw, 1040px);
     height: auto;
+}
+
+.mobile-brand-lockup {
+    display: none;
+}
+
+.brand-rbq {
+    position: absolute;
+    right: calc(max(7vw, 50% - 520px) + 24px);
+    bottom: 20px;
+    padding: 2px 4px;
+    background: rgb(var(--warm-white-rgb) / 0.96);
+    color: var(--carbon);
+    font-size: clamp(0.82rem, 1vw, 0.95rem);
+    font-weight: 900;
+    line-height: 1.15;
+    white-space: nowrap;
 }
 
 .site-nav {
@@ -887,8 +906,16 @@ h3 {
         border-top: 0;
     }
 
-    .brand img {
+    .brand > img {
         width: min(74vw, 620px);
+    }
+
+    .brand-rbq {
+        /* Track the right edge of the left-aligned tablet logo, including its 18px inset. */
+        right: calc(100% - min(74vw, 620px) - 18px);
+        bottom: 15px;
+        padding: 1px 3px;
+        font-size: 0.75rem;
     }
 
     .menu-toggle {
@@ -984,8 +1011,72 @@ h3 {
         padding-bottom: 64px;
     }
 
-    .brand img {
-        width: min(74vw, 430px);
+    .brand {
+        min-height: 75px;
+        padding: 7px 0 7px 12px;
+    }
+
+    .brand > img,
+    .brand > .brand-rbq {
+        display: none;
+    }
+
+    .mobile-brand-lockup {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .mobile-qe-mark,
+    .mobile-wordmark {
+        position: relative;
+        flex: 0 0 auto;
+        overflow: hidden;
+    }
+
+    .mobile-qe-mark {
+        width: clamp(82px, 24vw, 96px);
+        aspect-ratio: 395 / 185;
+    }
+
+    .mobile-wordmark {
+        width: clamp(132px, 38vw, 150px);
+        aspect-ratio: 470 / 132;
+    }
+
+    .mobile-qe-mark img,
+    .mobile-wordmark img {
+        position: absolute;
+        max-width: none;
+        height: auto;
+    }
+
+    /* Crops map to (80, 5)–(475, 190) and (570, 20)–(1040, 152) in QE Logo.webp. */
+    .mobile-qe-mark img {
+        top: -2.7%;
+        left: -20.25%;
+        width: 303.8%;
+    }
+
+    .mobile-wordmark img {
+        top: -15.15%;
+        left: -121.28%;
+        width: 255.32%;
+    }
+
+    .mobile-brand-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .mobile-rbq {
+        color: var(--carbon);
+        font-size: 0.75rem;
+        font-weight: 900;
+        line-height: 1.1;
+        white-space: nowrap;
     }
 
     .site-header::after {
