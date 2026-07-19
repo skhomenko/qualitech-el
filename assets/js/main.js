@@ -1,117 +1,200 @@
-let currentSlide = 0;
+const yearSpan = document.getElementById("current-year");
+const menuToggle = document.querySelector(".menu-toggle");
+const siteNav = document.getElementById("site-nav");
+const mobileCall = document.querySelector(".mobile-call");
+const quoteForms = document.querySelectorAll("[data-quote-form]");
+const emailCopyLinks = document.querySelectorAll("[data-copy-email]");
+const languageSwitches = document.querySelectorAll(".language-switch");
+const sectionLinks = siteNav ? Array.from(siteNav.querySelectorAll('a[href^="#"]')) : [];
+const sections = sectionLinks
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter((section) => section instanceof HTMLElement);
 
-// Function to show the current slide and update dots
-function showSlide(slides, index) {
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === index) {
-            slide.classList.add('active');
-            lazyLoadBackgrounds();
-        }
+if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+}
+
+if (menuToggle && siteNav) {
+    menuToggle.addEventListener("click", () => {
+        const isOpen = siteNav.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
-    updateSubheader(index);
-    updateURL();
-    updateDots();
-}
 
-// Function to update the URL with the current slide index
-function updateURL() {
-    const baseURL = window.location.href.split('?')[0];
-    const newURL = `${baseURL}?currentSlide=${currentSlide}`;
-    history.replaceState(null, '', newURL);
-}
-
-// Function to update the active dot
-function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, i) => {
-        dot.classList.remove('active');
-        if (i === currentSlide) {
-            dot.classList.add('active');
+    siteNav.addEventListener("click", (event) => {
+        if (event.target instanceof HTMLAnchorElement) {
+            siteNav.classList.remove("is-open");
+            menuToggle.setAttribute("aria-expanded", "false");
         }
     });
 }
 
-// Function to go to a specific slide
-function goToSlide(slideIndex) {
-    currentSlide = slideIndex;
-    const activeSlides = document.querySelectorAll('.carousel-slide');
-    showSlide(activeSlides, currentSlide);
-    updateSubheader(slideIndex);
-    updateLanguageSwitchLinks();
+if (mobileCall) {
+    const updateMobileCall = () => {
+        mobileCall.classList.toggle("is-visible", window.scrollY > 520);
+    };
+
+    updateMobileCall();
+    window.addEventListener("scroll", updateMobileCall, { passive: true });
 }
 
-// Initialize the carousel and footer year with the correct slide
-window.addEventListener('DOMContentLoaded', () => {
-    currentSlide = getCurrentSlide();  // Get the current slide index from URL or default to 0
+languageSwitches.forEach((link) => {
+    link.addEventListener("click", () => {
+        const language = link.getAttribute("lang");
+        if (language !== "en" && language !== "fr") {
+            return;
+        }
 
-    let activeSlides = document.querySelectorAll('.carousel-slide');
-    
-    showSlide(activeSlides, currentSlide);
-    updateSubheader(currentSlide);
-    updateLanguageSwitchLinks();
-    updateDots();
+        try {
+            localStorage.setItem("qualitech-language", language);
+        } catch {
+            // The link still works when storage is unavailable.
+        }
 
-    // Set current year in the footer
-    const yearSpan = document.getElementById('current-year');
-    const currentYear = new Date().getFullYear();
-    yearSpan.textContent = currentYear;
+        const target = new URL(link.getAttribute("href"), window.location.href);
+        target.search = window.location.search;
+        target.hash = window.location.hash;
+        link.href = target.toString();
+    });
 });
 
+let copyToastTimer;
 
-
-// Function to get the current slide index from the URL
-function getCurrentSlide() {
-    const params = new URLSearchParams(window.location.search);
-    const slideIndex = params.get('currentSlide');
-    return slideIndex ? parseInt(slideIndex) : 0;
-}
-
-// Function to show the next slide
-function nextSlide() {
-    const activeSlides = document.querySelectorAll('.carousel-slide');
-    currentSlide = (currentSlide + 1) % activeSlides.length;
-    showSlide(activeSlides, currentSlide);
-    updateLanguageSwitchLinks();
-}
-
-// Function to show the previous slide
-function prevSlide() {
-    const activeSlides = document.querySelectorAll('.carousel-slide');
-    currentSlide = (currentSlide - 1 + activeSlides.length) % activeSlides.length;
-    showSlide(activeSlides, currentSlide);
-    updateLanguageSwitchLinks();
-}
-
-// Function to update the subheader highlight
-function updateSubheader(slideIndex) {
-    const subheaderItems = document.querySelectorAll('.subheader-item');
-    subheaderItems.forEach((item, index) => {
-        item.classList.toggle('active', index === slideIndex);
-    });
-}
-
-// Function to update the language switch links
-function updateLanguageSwitchLinks() {
-    const switchToEnglish = document.getElementById('switch-to-en');
-    const switchToFrench = document.getElementById('switch-to-fr');
-
-    if (switchToEnglish) {
-        switchToEnglish.href = `index-en.html?currentSlide=${currentSlide}`;
+const showCopyToast = (message) => {
+    let toast = document.querySelector("[data-copy-toast]");
+    if (!(toast instanceof HTMLElement)) {
+        toast = document.createElement("div");
+        toast.className = "copy-toast";
+        toast.setAttribute("data-copy-toast", "");
+        toast.setAttribute("role", "status");
+        toast.setAttribute("aria-live", "polite");
+        document.body.appendChild(toast);
     }
-    if (switchToFrench) {
-        switchToFrench.href = `index-fr.html?currentSlide=${currentSlide}`;
+
+    toast.textContent = message;
+    toast.classList.remove("is-visible");
+    window.requestAnimationFrame(() => toast.classList.add("is-visible"));
+    window.clearTimeout(copyToastTimer);
+    copyToastTimer = window.setTimeout(() => {
+        toast.classList.remove("is-visible");
+    }, 2400);
+};
+
+const copyText = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
     }
-}
 
-// Function to lazy load background images
-function lazyLoadBackgrounds() {
-    const lazyBackgrounds = document.querySelectorAll('.carousel-slide');
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.setAttribute("readonly", "");
+    textArea.style.position = "fixed";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.select();
+    const copied = document.execCommand("copy");
+    textArea.remove();
+    if (!copied) {
+        throw new Error("Copy command was not accepted");
+    }
+};
 
-    lazyBackgrounds.forEach(function(lazyBackground) {
-        if (!lazyBackground.style.backgroundImage) {
-            // Apply the background image from data-bg
-            lazyBackground.style.backgroundImage = 'url(' + lazyBackground.dataset.bg + ')';
+emailCopyLinks.forEach((link) => {
+    link.addEventListener("click", async (event) => {
+        const email = link.getAttribute("data-copy-email");
+        if (!email) {
+            return;
+        }
+
+        event.preventDefault();
+        try {
+            await copyText(email);
+            showCopyToast(link.getAttribute("data-copy-success") || "Email address copied");
+        } catch {
+            showCopyToast(link.getAttribute("data-copy-failure") || "Unable to copy; opening your email application.");
+            window.setTimeout(() => {
+                window.location.href = link.href;
+            }, 500);
         }
     });
+});
+
+quoteForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!(form instanceof HTMLFormElement) || !form.reportValidity()) {
+            return;
+        }
+
+        const fields = Array.from(form.querySelectorAll("[data-field-label]"));
+        const messageLines = fields.flatMap((field) => {
+            if (!(field instanceof HTMLInputElement || field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement)) {
+                return [];
+            }
+
+            const value = field.value.trim();
+            const label = field.getAttribute("data-field-label");
+            return value && label ? [`${label}: ${value}`] : [];
+        });
+        const subject = form.getAttribute("data-subject") || "Qualitech website request";
+        const status = form.querySelector("[data-form-status]");
+        const readyMessage = form.getAttribute("data-ready-message");
+        const mailto = `mailto:info@qualitechelectricite.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(messageLines.join("\n\n"))}`;
+
+        if (status instanceof HTMLElement && readyMessage) {
+            status.textContent = readyMessage;
+        }
+        window.location.href = mailto;
+    });
+});
+
+if (sectionLinks.length && sections.length) {
+    const setActiveSection = (sectionId) => {
+        sectionLinks.forEach((link) => {
+            if (link.getAttribute("href") === `#${sectionId}`) {
+                link.setAttribute("aria-current", "location");
+            } else {
+                link.removeAttribute("aria-current");
+            }
+        });
+    };
+
+    if ("IntersectionObserver" in window) {
+        const visibleSections = new Set();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    visibleSections.add(entry.target.id);
+                } else {
+                    visibleSections.delete(entry.target.id);
+                }
+            });
+
+            let activeSection;
+            for (let index = sections.length - 1; index >= 0; index -= 1) {
+                if (visibleSections.has(sections[index].id)) {
+                    activeSection = sections[index];
+                    break;
+                }
+            }
+            setActiveSection(activeSection ? activeSection.id : "");
+        }, {
+            rootMargin: "-30% 0px -40% 0px",
+            threshold: 0,
+        });
+
+        sections.forEach((section) => observer.observe(section));
+    } else {
+        const updateActiveSection = () => {
+            const marker = window.innerHeight * 0.4;
+            const activeSection = sections.find((section) => {
+                const bounds = section.getBoundingClientRect();
+                return bounds.top <= marker && bounds.bottom >= marker;
+            });
+            setActiveSection(activeSection ? activeSection.id : "");
+        };
+
+        updateActiveSection();
+        window.addEventListener("scroll", updateActiveSection, { passive: true });
+    }
 }

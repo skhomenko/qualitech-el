@@ -1,0 +1,36 @@
+# Qualitech Électricité Inc.
+
+Qualitech Électricité Inc. is a residential, commercial, and industrial electrical contractor based in Saint-Jean-sur-Richelieu, QC.
+
+Website: https://qualitechelectricite.com/
+Phone: +1 514 806 9323
+Email: info@qualitechelectricite.com
+
+## Services
+
+- Residential electrical repairs, wiring, lighting, panels, and renovations
+- Commercial electrical installations, lighting, maintenance, and safety systems
+- Industrial electrical services, including three-phase power and machinery connections
+- Motor controls and industrial automation
+- Preventive electrical maintenance and troubleshooting
+- EV charger installation for homes and businesses
+- Electrical panel upgrades and added circuits
+- Smart lighting, climate controls, remote access, and energy management
+
+## Terminologie française
+
+- Services électriques résidentiels, commerciaux et industriels
+- Alimentation triphasée et raccordement de machinerie
+- Commandes de moteurs et automatisation industrielle
+- Entretien préventif et dépannage électrique
+- Bornes de recharge et mise à niveau de panneaux
+
+## Service areas
+
+- Greater Montreal and surrounding areas / Grand Montréal et environs
+- Based in Saint-Jean-sur-Richelieu, QC
+
+## Pages
+
+- French (default): https://qualitechelectricite.com/
+- English: https://qualitechelectricite.com/index-en.html
