@@ -6,9 +6,11 @@ Static bilingual website for Qualitech Électricité Inc., a residential, commer
 
 - `index.html`: French homepage and canonical default page.
 - `index-en.html`: English homepage.
-- `index-fr.html`: French compatibility page, canonicalized to `/`.
 - `404.html`: bilingual not-found page served by GitHub Pages for missing URLs.
 - `robots.txt`, `sitemap.xml`, and `llms.txt`: crawl and AI-discovery support files.
+
+`/` and `/index-en.html` are the only indexable URLs. Both are listed in `sitemap.xml` with hardcoded
+`lastmod` dates: bump them whenever page copy changes, otherwise they go stale silently.
 
 ## Branding colours
 
@@ -32,7 +34,7 @@ For accessible contrast, orange buttons use carbon text, blue is used for small 
 
 The site is intentionally static so it can remain on GitHub Pages. French is the default language, with a complete English version available from the language switch. Public Google review links open in new tabs. Review excerpts are manually curated from the public Google listing; any future live review feed should use a serverless proxy or static sync process so no Google API key is exposed in browser JavaScript.
 
-An explicit language choice is remembered on the visitor's device with the `qualitech-language` local-storage value. No cookie is created and no language preference is sent to the server. First-time visitors and visitors with unavailable browser storage receive the French default page.
+An explicit language choice is remembered on the visitor's device with the `qualitech-language` local-storage value, which preserves the current query string and fragment across the language switch. No cookie is created and no language preference is sent to the server. Every visitor to `/` receives the French page: the preference never redirects, because a client-side redirect on the canonical URL is an indexing risk. Switching language is always an explicit click on the header language link.
 
 ## Online quote request status and limitations
 
