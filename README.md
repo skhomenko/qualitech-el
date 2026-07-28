@@ -34,9 +34,9 @@ For accessible contrast, orange buttons use carbon text, blue is used for small 
 
 The site is intentionally static so it can remain on GitHub Pages. French is the default language, with a complete English version available from the language switch. Public Google review links open in new tabs. Review excerpts are manually curated from the public Google listing; any future live review feed should use a serverless proxy or static sync process so no Google API key is exposed in browser JavaScript.
 
-An explicit language choice is recorded on the visitor's device in the `qualitech-language` local-storage value. No cookie is created and no language preference is sent to the server. Nothing currently reads that value, so it does not change what any visitor sees: `/` always serves the French page, because a client-side redirect on the canonical URL is an indexing risk. The value is kept only so a future non-redirecting language hint could use it.
+No language preference is stored. There is no cookie, no local-storage value, and nothing is sent to the server: `/` always serves the French page for every visitor. A client-side redirect on the canonical URL is an indexing risk, so the language is never chosen automatically.
 
-Switching language is always an explicit click on the header language link, which carries the current query string and fragment across to the other page. Visitors who arrive from a search engine land directly on the correct language via the `hreflang` alternates, and `/index-en.html` can be bookmarked.
+Switching language is always an explicit click on the header language link, which carries the current query string and fragment across to the other page. The `hreflang` alternates help search engines present the appropriate language page, and `/index-en.html` can be bookmarked directly. Both language links point at the canonical addresses (`/` and `/index-en.html`) so no duplicate URL is generated for crawlers.
 
 ## Online quote request status and limitations
 

@@ -39,17 +39,6 @@ if (mobileCall) {
 
 languageSwitches.forEach((link) => {
     link.addEventListener("click", () => {
-        const language = link.getAttribute("lang");
-        if (language !== "en" && language !== "fr") {
-            return;
-        }
-
-        try {
-            localStorage.setItem("qualitech-language", language);
-        } catch {
-            // The link still works when storage is unavailable.
-        }
-
         const target = new URL(link.getAttribute("href"), window.location.href);
         target.search = window.location.search;
         target.hash = window.location.hash;
